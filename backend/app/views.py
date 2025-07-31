@@ -44,9 +44,9 @@ def check_email():
     inbox_num = spam_num = nofind_num = 0
 
     for acc in address_info:
-        account = acc[1].replace('\r\n', '')
-        password = acc[2].replace('\r\n', '')
-        statuses = check_email_status(account, password, from_name_or_email.replace('\r\n', ''))  # returns list of status dicts
+        account = acc[1].replace('\n', '').replace('\r', '')
+        password = acc[2].replace('\n', '').replace('\r', '')
+        statuses = check_email_status(account, password, from_name_or_email)  # returns list of status dicts
         result_item = {"emails": []}
         for status in statuses:
             result_item["emails"].append({**status, "state": True})
