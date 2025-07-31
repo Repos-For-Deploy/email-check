@@ -7,8 +7,8 @@ def check_email_status(gmail_email, app_password, from_email_or_name):
     
     # List of folders to search
     folders = ["INBOX", "[Gmail]/Spam"]
-    msges = []
     def find_msg(folder):        
+        msges = []
         try:
             with MailBox('imap.gmail.com').login(gmail_email, app_password, initial_folder=folder) as box:
                 criteria = AND(from_=from_email_or_name)
@@ -25,7 +25,7 @@ def check_email_status(gmail_email, app_password, from_email_or_name):
     # Loop through each folder
     results = []
     for folder in folders:
-        find_msg(folder)  # Get messages from this folder (return value, not global)
+        msges = find_msg(folder)  # Get messages from this folder (return value, not global)
         for msg in msges:
             result = {}  # Create a new result dictionary for each message
             
@@ -62,7 +62,7 @@ def check_email_status(gmail_email, app_password, from_email_or_name):
             except Exception as e:
                 result["diff_time"] = ""
                 result["text"] = ""
-            msges = []
+            
             results.append(result)  # Append after processing
 
     return results

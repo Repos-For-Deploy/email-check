@@ -11,7 +11,7 @@ mysql = MySQL()
 
 def create_app():
     app = Flask(__name__, static_folder="./static", static_url_path="/")
-    CORS(app, origins=["https://email-check-gtbu.onrender.com"], supports_credentials=True)  #  CORS added to correct app instance
+    CORS(app, supports_credentials=True)  # origins=["https://email-check-gtbu.onrender.com"],  CORS added to correct app instance
 
     # Load environment variables
     app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
