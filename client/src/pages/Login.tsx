@@ -1,41 +1,30 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import api from "./Api";
 
-export default function LoginPage() {
+interface LoginPageProps {
+  onLoginSuccess: () => void;
+}
+
+function LoginPage({ onLoginSuccess }: LoginPageProps) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const navigate = useNavigate();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault(); // Prevent page reload
-    const request_token = localStorage.getItem("token")
-    const request_device_id = localStorage.getItem("device_id");
+
     try {
-      const res = await axios.post("https://email-check-backend.onrender.com/api/login", {
+      const res = await api.post("/api/login", {
         username,
         password,
-      },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${request_token}`,
-            "X-Device-ID": request_device_id,
-          },
-          withCredentials: true,
-        }
-      );
+      });
 
       const { token } = res.data;
-      const { emails } = res.data;
-      const { device_id } = res.data;
-      const emailList: string[] = emails;
+
       if (token) {
         localStorage.setItem("token", token);
-        localStorage.setItem("device_id", device_id);
-        const query = emailList.map(email => `email=${encodeURIComponent(email)}`).join("&");
-        navigate(`/dashboard?${query}`);
+        onLoginSuccess();
       } else {
         setError("No token received. Login failed.");
       }
@@ -95,3 +84,5 @@ export default function LoginPage() {
     </div>
   );
 }
+
+export default LoginPage;
