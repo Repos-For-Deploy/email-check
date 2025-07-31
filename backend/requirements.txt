@@ -6,6 +6,7 @@ cryptography==45.0.5
 dotenv==0.9.9
 Flask==3.1.1
 flask-cors==6.0.1
+Flask-JWT-Extended==4.7.1
 Flask-MySQLdb==2.0.0
 Flask-SQLAlchemy==3.1.1
 greenlet==3.2.3
@@ -25,4 +26,3 @@ SQLAlchemy==2.0.41
 typing_extensions==4.14.1
 waitress==3.0.2
 Werkzeug==3.1.3
-
