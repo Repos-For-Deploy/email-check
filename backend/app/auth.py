@@ -12,7 +12,7 @@ def create_user():
     data = request.json
     username = data.get("username")
     password = data.get("password")    
-
+    
     hashed_password = generate_password_hash(password)
     try:
         cur = mysql.connection.cursor()
