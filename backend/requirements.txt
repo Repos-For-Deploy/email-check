@@ -27,6 +27,7 @@ SQLAlchemy==2.0.41
 typing_extensions==4.14.1
 waitress==3.0.2
 Werkzeug==3.1.3
+Flask
 gunicorn
 python-dotenv
 flask-cors
