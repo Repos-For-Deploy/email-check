@@ -13,7 +13,7 @@ export default function LoginPage() {
     const request_token = localStorage.getItem("token")
     const request_device_id = localStorage.getItem("device_id");
     try {
-      const res = await axios.post("https://email-check-gtbu.onrender.com/api/login", {
+      const res = await axios.post("https://email-check-backend.onrender.com/api/login", {
         username,
         password,
       },
