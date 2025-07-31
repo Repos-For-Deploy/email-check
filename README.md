@@ -1,2 +1,1 @@
-# email-check
-email-check
+# Email-Checker
