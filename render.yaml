@@ -4,12 +4,19 @@ services:
     env: python
     buildCommand: ""
     startCommand: gunicorn app:app
+    rootDir: backend
     envVars:
       - key: DB_HOST
-        value: bibgroup.cloud
+        sync: false
       - key: DB_USER
-        value: root
+        sync: false
       - key: DB_PASSWORD
-        value: rootroot
+        sync: false
       - key: DB_NAME
-        value: u341164330_email_checker
+        sync: false
+
+  - type: static
+    name: react-frontend
+    rootDir: client
+    buildCommand: npm install && npm run build
+    staticPublishPath: build
