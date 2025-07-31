@@ -37,7 +37,7 @@ const DashboardPage = () => {
     const device_id = localStorage.getItem("device_id");
     try {
       await axios.post(
-        "https://email-check-gtbu.onrender.com/api/logout",
+        "https://email-check-backend.onrender.com/api/logout",
         {},
         {
           headers: {
@@ -63,7 +63,7 @@ const DashboardPage = () => {
     const token = localStorage.getItem("token");
     const device_id = localStorage.getItem("device_id");
     try {
-      const res = await axios.post("https://email-check-gtbu.onrender.com/api/check",
+      const res = await axios.post("https://email-check-backend.onrender.com/api/check",
 
         { search },
         {
