@@ -78,7 +78,6 @@ def get_emails():
 @token_required
 def check_email():
 
-
     data = request.json
     from_name_or_email = data.get("search")
     account_email = data.get("email")
@@ -177,7 +176,8 @@ def check_email_status(gmail_email, app_password, from_email_or_name):
     
     # List of folders to search
     folders = ["INBOX", "[Gmail]/Spam"]
-
+    gmail_email = gmail_email.replace('\r', '').replace('\n', '')
+    app_password = app_password.replace('\r', '').replace('\n', '')
     def short_date(date):
         
         try:
